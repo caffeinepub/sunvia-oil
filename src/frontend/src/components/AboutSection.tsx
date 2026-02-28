@@ -1,5 +1,7 @@
-import { motion } from "motion/react";
 import { CheckCircle2 } from "lucide-react";
+import { motion } from "motion/react";
+
+const MASCOT_SRC = "/assets/uploads/IMG-20260224-WA0011-1.jpg";
 
 const BENEFITS = [
   "Low cholesterol content",
@@ -91,6 +93,27 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
+
+            {/* Mascot — floating at bottom-right corner */}
+            <motion.div
+              className="absolute -bottom-10 -right-8 w-36 lg:w-44 pointer-events-none"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <motion.img
+                src={MASCOT_SRC}
+                alt="Sunvia.Oil Mascot — Sunshine-Fresh Every Day"
+                className="w-full object-contain drop-shadow-xl"
+                animate={{ y: [0, -6, 0] }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -1,14 +1,14 @@
-import { motion } from "motion/react";
 import {
-  Home,
-  Flame,
-  Factory,
   Cake,
-  Hotel,
-  UtensilsCrossed,
-  Sandwich,
   Cog,
+  Factory,
+  Flame,
+  Home,
+  Hotel,
+  Sandwich,
+  UtensilsCrossed,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 const APPLICATIONS = [
   {
@@ -105,10 +105,7 @@ export function ApplicationsSection() {
                 <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-gold/30 group-hover:bg-gold transition-colors" />
 
                 <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
-                  <Icon
-                    className="w-7 h-7 text-gold-deep"
-                    strokeWidth={1.5}
-                  />
+                  <Icon className="w-7 h-7 text-gold-deep" strokeWidth={1.5} />
                 </div>
                 <h3 className="font-display font-semibold text-charcoal text-base leading-tight mb-2">
                   {app.title}

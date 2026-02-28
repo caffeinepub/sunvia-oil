@@ -1,6 +1,9 @@
-import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Award, Package, Tag, Globe } from "lucide-react";
+import { ArrowDown, Award, Globe, Package, Tag } from "lucide-react";
+import { motion } from "motion/react";
+
+const MASCOT_SRC =
+  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 
 const TRUST_BADGES = [
   { icon: Award, label: "Export-Ready" },
@@ -27,78 +30,102 @@ export function HeroSection() {
           backgroundImage: `url('/assets/generated/hero-sunflower-field.dim_1600x700.jpg')`,
         }}
       />
-      {/* Gradient overlay — dark at bottom/left for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/70 to-charcoal/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-charcoal/20" />
+      {/* Gradient overlay — very strong dark overlay for guaranteed text legibility */}
+      <div className="absolute inset-0 bg-charcoal/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/90 to-charcoal/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-charcoal/50" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 lg:pt-32 lg:pb-40">
-        <div className="max-w-3xl">
-          {/* Pre-heading badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-4 py-1.5 mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="text-gold text-xs font-body font-semibold uppercase tracking-widest">
-              Premium B2B Export Supply
-            </span>
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight mb-6"
-          >
-            Premium Refined
-            <br />
-            <span className="text-gold">Sunflower Oil</span>
-            <br />
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold opacity-90">
-              Bulk Supply Worldwide
-            </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="text-white/80 text-lg sm:text-xl font-body leading-relaxed mb-10 max-w-xl"
-          >
-            High-quality food-grade sunflower oil for retail, commercial, and
-            industrial applications. Consistent supply, flexible packaging,
-            private labeling available.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Button
-              type="button"
-              onClick={scrollToContact}
-              size="lg"
-              className="bg-gold text-charcoal hover:bg-gold-deep font-body font-bold text-base px-8 py-6 h-auto shadow-gold hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+        <div className="flex items-center justify-between gap-8">
+          {/* Left: Text */}
+          <div className="max-w-2xl flex-1">
+            {/* Pre-heading badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-4 py-1.5 mb-6"
             >
-              Request Bulk Quote
-            </Button>
-            <Button
-              type="button"
-              onClick={scrollToProducts}
-              variant="outline"
-              size="lg"
-              className="border-white/60 text-white bg-white/10 hover:bg-white/20 hover:border-white font-body font-semibold text-base px-8 py-6 h-auto backdrop-blur-sm transition-all duration-300"
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+              <span className="text-gold text-xs font-body font-semibold uppercase tracking-widest">
+                Premium B2B Export Supply
+              </span>
+            </motion.div>
+
+            {/* Main heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight mb-6"
             >
-              View Specifications
-            </Button>
+              Premium Refined
+              <br />
+              <span className="text-gold">Sunflower Oil</span>
+              <br />
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold opacity-90">
+                Bulk Supply Worldwide
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="text-white/80 text-lg sm:text-xl font-body leading-relaxed mb-10 max-w-xl"
+            >
+              High-quality food-grade sunflower oil for retail, commercial, and
+              industrial applications. Consistent supply, flexible packaging,
+              private labeling available.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button
+                type="button"
+                onClick={scrollToContact}
+                size="lg"
+                className="bg-gold text-charcoal hover:bg-gold-deep font-body font-bold text-base px-8 py-6 h-auto shadow-gold hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Request Bulk Quote
+              </Button>
+              <Button
+                type="button"
+                onClick={scrollToProducts}
+                variant="outline"
+                size="lg"
+                className="border-white/60 text-white bg-white/10 hover:bg-white/20 hover:border-white font-body font-semibold text-base px-8 py-6 h-auto backdrop-blur-sm transition-all duration-300"
+              >
+                View Specifications
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Right: Mascot */}
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="hidden lg:flex items-end justify-center shrink-0 self-end pb-4"
+          >
+            <motion.img
+              src={MASCOT_SRC}
+              alt="Sunvia.Oil Mascot — Sunshine-Fresh Every Day"
+              className="w-80 lg:w-96 object-contain drop-shadow-2xl"
+              animate={{ y: [0, -10, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
+            />
           </motion.div>
         </div>
       </div>

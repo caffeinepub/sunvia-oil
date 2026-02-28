@@ -1,5 +1,5 @@
-import { motion } from "motion/react";
 import { CheckCircle2, Store } from "lucide-react";
+import { motion } from "motion/react";
 
 const SERVICES = [
   "Custom brand packaging",
@@ -12,7 +12,10 @@ const SERVICES = [
 
 export function PrivateLabelSection() {
   return (
-    <section id="private-label" className="py-20 lg:py-28 bg-cream-warm section-grain">
+    <section
+      id="private-label"
+      className="py-20 lg:py-28 bg-cream-warm section-grain"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -54,7 +57,10 @@ export function PrivateLabelSection() {
                   className="flex items-center gap-4 bg-white rounded-xl px-5 py-4 shadow-xs border border-border"
                 >
                   <div className="w-8 h-8 rounded-lg bg-gold/15 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-4.5 h-4.5 text-gold-deep" strokeWidth={2} />
+                    <CheckCircle2
+                      className="w-4.5 h-4.5 text-gold-deep"
+                      strokeWidth={2}
+                    />
                   </div>
                   <span className="font-body font-medium text-charcoal text-base">
                     {service}

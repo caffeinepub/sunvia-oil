@@ -1,5 +1,5 @@
+import { FlaskConical, Globe, PackageCheck, Settings } from "lucide-react";
 import { motion } from "motion/react";
-import { FlaskConical, Settings, PackageCheck, Globe } from "lucide-react";
 
 const QA_POINTS = [
   {
@@ -64,7 +64,10 @@ export function QualitySection() {
                 {/* Number */}
                 <div className="flex items-start justify-between mb-5">
                   <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                    <Icon className="w-6 h-6 text-gold-deep" strokeWidth={1.75} />
+                    <Icon
+                      className="w-6 h-6 text-gold-deep"
+                      strokeWidth={1.75}
+                    />
                   </div>
                   <span className="font-display font-bold text-4xl text-gold/15 leading-none">
                     {String(idx + 1).padStart(2, "0")}

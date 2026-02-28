@@ -1,5 +1,5 @@
-import { motion } from "motion/react";
 import { CheckCircle2, FlaskConical } from "lucide-react";
+import { motion } from "motion/react";
 
 const SPECS = [
   { label: "Origin", value: "High-quality sunflower seed oil" },
@@ -80,7 +80,10 @@ export function ProductSpecs() {
             <div className="bg-gold/10 border border-gold/20 rounded-2xl p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
-                  <FlaskConical className="w-5 h-5 text-gold" strokeWidth={1.75} />
+                  <FlaskConical
+                    className="w-5 h-5 text-gold"
+                    strokeWidth={1.75}
+                  />
                 </div>
                 <h3 className="font-display font-semibold text-white text-xl">
                   Typical Quality Parameters

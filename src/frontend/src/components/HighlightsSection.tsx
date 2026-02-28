@@ -1,14 +1,14 @@
-import { motion } from "motion/react";
 import {
   Droplets,
   Flame,
-  Shield,
   Heart,
-  Sparkles,
-  Truck,
   Package,
+  Shield,
+  Sparkles,
   Tag,
+  Truck,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 const HIGHLIGHTS = [
   {

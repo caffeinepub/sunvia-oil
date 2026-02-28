@@ -1,4 +1,9 @@
-import { Sun, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import type React from "react";
+
+const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+const MASCOT_SRC =
+  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 
 const QUICK_LINKS = [
   { label: "About Sunvia.Oil", href: "#about" },
@@ -9,7 +14,8 @@ const QUICK_LINKS = [
   { label: "Contact Us", href: "#contact" },
 ];
 
-function handleScroll(href: string) {
+function handleScroll(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+  e.preventDefault();
   document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -23,27 +29,36 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center">
-                <Sun className="w-5 h-5 text-charcoal" strokeWidth={2.5} />
-              </div>
-              <div>
-                <span className="font-display font-bold text-xl text-white">
-                  Sunvia<span className="text-gold">.Oil</span>
-                </span>
-              </div>
+            {/* Sunvia.Oil brand — mascot as logo */}
+            <div className="flex items-center gap-2.5 mb-1">
+              <img
+                src={MASCOT_SRC}
+                alt="Sunvia.Oil"
+                className="w-11 h-11 object-contain shrink-0"
+              />
+              <span className="font-display font-bold text-2xl text-white">
+                Sunvia<span className="text-gold">.Oil</span>
+              </span>
             </div>
-            <p className="font-body font-semibold text-gold text-xs uppercase tracking-widest mb-3">
+            <p className="font-body font-semibold text-gold text-xs uppercase tracking-widest mb-4">
               Farms to Markets, Worldwide
             </p>
             <p className="font-body text-white/50 text-sm leading-relaxed mb-5 max-w-xs">
-              Premium refined sunflower oil for bulk export. Consistent
-              quality, flexible packaging, and private labeling for global
-              importers and distributors.
+              Premium refined sunflower oil for bulk export. Consistent quality,
+              flexible packaging, and private labeling for global importers and
+              distributors.
             </p>
-            <p className="font-body text-white/30 text-xs">
-              Operated by SBZ Enterprises
-            </p>
+            {/* SBZ Enterprises — separate branding */}
+            <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+              <img
+                src={SBZ_LOGO_SRC}
+                alt="SBZ Enterprises"
+                className="w-7 h-7 rounded-md object-cover shrink-0 opacity-80"
+              />
+              <span className="font-body text-white/40 text-xs uppercase tracking-widest font-semibold">
+                SBZ Enterprises
+              </span>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -54,13 +69,13 @@ export function Footer() {
             <ul className="space-y-2.5">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <button
-                    type="button"
-                    onClick={() => handleScroll(link.href)}
-                    className="font-body text-white/55 text-sm hover:text-gold transition-colors"
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="font-body text-white/55 text-sm hover:text-gold transition-colors cursor-pointer"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -77,7 +92,10 @@ export function Footer() {
                   href="mailto:sbzintl@gmail.com"
                   className="flex items-start gap-3 group"
                 >
-                  <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" strokeWidth={2} />
+                  <Mail
+                    className="w-4 h-4 text-gold mt-0.5 shrink-0"
+                    strokeWidth={2}
+                  />
                   <span className="font-body text-white/55 text-sm group-hover:text-gold transition-colors">
                     sbzintl@gmail.com
                   </span>
@@ -85,17 +103,23 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+919400051881"
+                  href="tel:+919400051880"
                   className="flex items-start gap-3 group"
                 >
-                  <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" strokeWidth={2} />
+                  <Phone
+                    className="w-4 h-4 text-gold mt-0.5 shrink-0"
+                    strokeWidth={2}
+                  />
                   <span className="font-body text-white/55 text-sm group-hover:text-gold transition-colors">
-                    +91 94000 51881
+                    +91 94000 51880
                   </span>
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" strokeWidth={2} />
+                <MapPin
+                  className="w-4 h-4 text-gold mt-0.5 shrink-0"
+                  strokeWidth={2}
+                />
                 <span className="font-body text-white/55 text-sm">
                   Pirayiri, Palakkad,
                   <br />

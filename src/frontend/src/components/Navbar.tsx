@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "motion/react";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+
+const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+const MASCOT_SRC =
+  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -45,18 +49,30 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-2.5 group"
+              className="flex items-center gap-3 group"
             >
-              <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center shadow-gold shrink-0">
-                <Sun className="w-4.5 h-4.5 text-charcoal" strokeWidth={2.5} />
-              </div>
+              {/* Sunvia.Oil logo — mascot without background */}
+              <img
+                src={MASCOT_SRC}
+                alt="Sunvia.Oil"
+                className="w-10 h-10 object-contain shrink-0"
+              />
               <div className="flex flex-col leading-none">
                 <span className="font-display font-bold text-xl text-charcoal tracking-tight group-hover:text-gold transition-colors">
-                  Sunvia
-                  <span className="text-gold">.Oil</span>
+                  Sunvia<span className="text-gold">.Oil</span>
                 </span>
-                <span className="text-[10px] font-body font-semibold text-charcoal-mid tracking-widest uppercase opacity-70">
-                  by SBZ Enterprises
+              </div>
+              {/* Separator */}
+              <div className="hidden sm:block w-px h-7 bg-charcoal/20 mx-1" />
+              {/* SBZ Enterprises logo — separate */}
+              <div className="hidden sm:flex items-center gap-1.5">
+                <img
+                  src={SBZ_LOGO_SRC}
+                  alt="SBZ Enterprises"
+                  className="w-7 h-7 rounded-md object-cover shrink-0 opacity-85"
+                />
+                <span className="text-[10px] font-body font-semibold text-charcoal-mid tracking-widest uppercase opacity-60">
+                  SBZ Enterprises
                 </span>
               </div>
             </button>
@@ -68,7 +84,7 @@ export function Navbar() {
                   type="button"
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="px-3.5 py-2 text-sm font-body font-medium text-charcoal-mid hover:text-gold transition-colors rounded-md hover:bg-gold/5"
+                  className="px-3.5 py-2 text-sm font-body font-medium text-charcoal-mid hover:text-gold transition-colors rounded-md hover:bg-gold/5 cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -94,7 +110,11 @@ export function Navbar() {
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </nav>
@@ -116,7 +136,7 @@ export function Navbar() {
                   type="button"
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left px-4 py-3 text-base font-body font-medium text-charcoal hover:bg-gold/8 hover:text-gold rounded-md transition-colors"
+                  className="text-left px-4 py-3 text-base font-body font-medium text-charcoal hover:bg-gold/8 hover:text-gold rounded-md transition-colors cursor-pointer"
                 >
                   {link.label}
                 </button>

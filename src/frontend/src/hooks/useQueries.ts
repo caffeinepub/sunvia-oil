@@ -25,7 +25,7 @@ export function useSubmitInquiry() {
         data.email,
         data.phone,
         data.message,
-        data.packagingInterest
+        data.packagingInterest,
       );
     },
     onSuccess: () => {

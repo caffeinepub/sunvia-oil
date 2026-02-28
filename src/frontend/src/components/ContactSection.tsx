@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -11,15 +8,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Building2,
-  Loader2,
   CheckCircle2,
-  Sun,
+  Loader2,
+  Mail,
+  MapPin,
+  Phone,
 } from "lucide-react";
+import { motion } from "motion/react";
+import { useState } from "react";
+
+const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+const MASCOT_SRC =
+  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 import { useSubmitInquiry } from "@/hooks/useQueries";
 
 type FormData = {
@@ -121,16 +124,32 @@ export function ContactSection() {
             {/* Brand card */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-7">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
-                  <Sun className="w-5 h-5 text-charcoal" strokeWidth={2.5} />
-                </div>
-                <div>
+                {/* Sunvia.Oil mascot logo */}
+                <img
+                  src={MASCOT_SRC}
+                  alt="Sunvia.Oil"
+                  className="w-12 h-12 object-contain shrink-0"
+                />
+                <div className="flex-1">
                   <h3 className="font-display font-bold text-white text-xl">
-                    SBZ ENTERPRISES
+                    Sunvia<span className="text-gold">.Oil</span>
                   </h3>
                   <p className="font-body text-gold text-xs font-semibold uppercase tracking-widest mt-0.5">
                     Farms to Markets, Worldwide
                   </p>
+                </div>
+                {/* SBZ Enterprises logo — separate */}
+                <div className="flex flex-col items-center gap-1 shrink-0">
+                  <img
+                    src={SBZ_LOGO_SRC}
+                    alt="SBZ Enterprises"
+                    className="w-9 h-9 rounded-lg object-cover opacity-85"
+                  />
+                  <span className="font-body text-white/35 text-[9px] uppercase tracking-widest font-semibold text-center leading-tight">
+                    SBZ
+                    <br />
+                    Enterprises
+                  </span>
                 </div>
               </div>
 
@@ -159,7 +178,7 @@ export function ContactSection() {
                 </a>
 
                 <a
-                  href="tel:+919400051881"
+                  href="tel:+919400051880"
                   className="flex items-center gap-4 group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors shrink-0">
@@ -170,7 +189,7 @@ export function ContactSection() {
                       Phone / WhatsApp
                     </p>
                     <p className="font-body text-white text-sm group-hover:text-gold transition-colors">
-                      +91 94000 51881
+                      +91 94000 51880
                     </p>
                   </div>
                 </a>
@@ -212,13 +231,18 @@ export function ContactSection() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/919400051881?text=Hello%2C%20I%20am%20interested%20in%20Sunvia.Oil%20bulk%20supply.%20Please%20share%20details."
+              href="https://wa.me/919400051880?text=Hello%2C%20I%20am%20interested%20in%20Sunvia.Oil%20bulk%20supply.%20Please%20share%20details."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-[#25D366]/15 border border-[#25D366]/30 rounded-2xl p-5 hover:bg-[#25D366]/25 transition-colors group"
             >
               <div className="w-12 h-12 rounded-xl bg-[#25D366] flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white" aria-label="WhatsApp" role="img">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 fill-white"
+                  aria-label="WhatsApp"
+                  role="img"
+                >
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
               </div>
@@ -227,7 +251,7 @@ export function ContactSection() {
                   Message on WhatsApp
                 </p>
                 <p className="font-body text-white/55 text-xs mt-0.5">
-                  +91 94000 51881 — Quick response
+                  +91 94000 51880 — Quick response
                 </p>
               </div>
             </a>
@@ -360,7 +384,8 @@ export function ContactSection() {
                         htmlFor="email"
                         className="font-body font-medium text-charcoal text-sm"
                       >
-                        Email Address <span className="text-destructive">*</span>
+                        Email Address{" "}
+                        <span className="text-destructive">*</span>
                       </Label>
                       <Input
                         id="email"
@@ -420,19 +445,34 @@ export function ContactSection() {
                           <SelectValue placeholder="Select packaging type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="Retail Packs" className="font-body text-sm">
+                          <SelectItem
+                            value="Retail Packs"
+                            className="font-body text-sm"
+                          >
                             Retail Packs
                           </SelectItem>
-                          <SelectItem value="Food Service Packs" className="font-body text-sm">
+                          <SelectItem
+                            value="Food Service Packs"
+                            className="font-body text-sm"
+                          >
                             Food Service Packs
                           </SelectItem>
-                          <SelectItem value="Industrial/Bulk" className="font-body text-sm">
+                          <SelectItem
+                            value="Industrial/Bulk"
+                            className="font-body text-sm"
+                          >
                             Industrial / Bulk
                           </SelectItem>
-                          <SelectItem value="Private Label/OEM" className="font-body text-sm">
+                          <SelectItem
+                            value="Private Label/OEM"
+                            className="font-body text-sm"
+                          >
                             Private Label / OEM
                           </SelectItem>
-                          <SelectItem value="Other" className="font-body text-sm">
+                          <SelectItem
+                            value="Other"
+                            className="font-body text-sm"
+                          >
                             Other
                           </SelectItem>
                         </SelectContent>
