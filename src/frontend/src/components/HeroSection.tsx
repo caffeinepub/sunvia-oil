@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Award, Globe, Package, Tag } from "lucide-react";
 import { motion } from "motion/react";
+import heroBg from "/assets/generated/hero-sunflower-field.dim_1600x700.jpg";
+import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 
-const MASCOT_SRC =
-  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+const MASCOT_SRC = mascotImg;
+const HERO_BG = heroBg;
 
 const TRUST_BADGES = [
   { icon: Award, label: "Export-Ready" },
@@ -27,13 +29,30 @@ export function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/assets/generated/hero-sunflower-field.dim_1600x700.jpg')`,
+          backgroundImage: `url(${HERO_BG})`,
         }}
       />
-      {/* Gradient overlay — very strong dark overlay for guaranteed text legibility */}
-      <div className="absolute inset-0 bg-charcoal/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/90 to-charcoal/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-charcoal/50" />
+      {/* Heavy solid base overlay — guarantees text legibility regardless of image brightness */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(10,8,4,0.82)" }}
+      />
+      {/* Left gradient: text side nearly opaque, image partially visible on right only on large screens */}
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,8,4,0.30) 0%, rgba(10,8,4,0.10) 55%, rgba(10,8,4,0.00) 100%)",
+        }}
+      />
+      {/* Top vignette for navbar readability */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,8,4,0.50) 0%, transparent 25%, rgba(10,8,4,0.45) 90%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 lg:pt-32 lg:pb-40">
@@ -48,7 +67,10 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-4 py-1.5 mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span className="text-gold text-xs font-body font-semibold uppercase tracking-widest">
+              <span
+                className="text-gold text-xs font-body font-semibold uppercase tracking-widest"
+                style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+              >
                 Premium B2B Export Supply
               </span>
             </motion.div>
@@ -59,12 +81,21 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight mb-6"
+              style={{
+                textShadow:
+                  "0 2px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9)",
+              }}
             >
               Premium Refined
               <br />
-              <span className="text-gold">Sunflower Oil</span>
+              <span
+                className="text-gold"
+                style={{ textShadow: "0 2px 16px rgba(0,0,0,0.7)" }}
+              >
+                Sunflower Oil
+              </span>
               <br />
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold opacity-90">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white">
                 Bulk Supply Worldwide
               </span>
             </motion.h1>
@@ -74,7 +105,8 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="text-white/80 text-lg sm:text-xl font-body leading-relaxed mb-10 max-w-xl"
+              className="text-white text-lg sm:text-xl font-body leading-relaxed mb-10 max-w-xl"
+              style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}
             >
               High-quality food-grade sunflower oil for retail, commercial, and
               industrial applications. Consistent supply, flexible packaging,
@@ -135,14 +167,15 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="relative z-10 border-t border-white/15 bg-charcoal/60 backdrop-blur-md"
+        className="relative z-10 border-t border-white/20 backdrop-blur-md"
+        style={{ background: "rgba(10,8,4,0.88)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {TRUST_BADGES.map((badge) => (
               <div key={badge.label} className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-                <span className="text-white/80 text-sm font-body font-medium uppercase tracking-wider">
+                <span className="text-white text-sm font-body font-semibold uppercase tracking-wider">
                   {badge.label}
                 </span>
               </div>

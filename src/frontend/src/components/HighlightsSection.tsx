@@ -14,7 +14,7 @@ const HIGHLIGHTS = [
   {
     icon: Droplets,
     title: "Food-Grade Refined Sunflower Oil",
-    desc: "Produced to the highest international food safety standards",
+    desc: "Produced to international food safety standards",
   },
   {
     icon: Flame,
@@ -24,17 +24,17 @@ const HIGHLIGHTS = [
   {
     icon: Shield,
     title: "High Oxidative Stability",
-    desc: "Extended shelf life with excellent resistance to oxidation",
+    desc: "Good shelf life with resistance to oxidation",
   },
   {
     icon: Heart,
     title: "Low Saturated Fat Content",
-    desc: "Healthier fat profile with high polyunsaturated fatty acids",
+    desc: "Fat profile with high polyunsaturated fatty acids",
   },
   {
     icon: Sparkles,
     title: "Rich in Vitamin E",
-    desc: "Natural antioxidant content supporting health and stability",
+    desc: "Natural antioxidant content supporting product stability",
   },
   {
     icon: Truck,
@@ -44,7 +44,7 @@ const HIGHLIGHTS = [
   {
     icon: Package,
     title: "Export-Ready Packaging",
-    desc: "All formats meet destination country regulatory requirements",
+    desc: "Formats available to meet destination country requirements",
   },
   {
     icon: Tag,

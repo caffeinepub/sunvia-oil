@@ -1,15 +1,17 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import type React from "react";
+import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
 
-const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
-const MASCOT_SRC =
-  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+const SBZ_LOGO_SRC = sbzLogo;
+const MASCOT_SRC = mascotImg;
 
 const QUICK_LINKS = [
   { label: "About Sunvia.Oil", href: "#about" },
   { label: "Product Specifications", href: "#products" },
   { label: "Packaging Options", href: "#packaging" },
   { label: "Private Label / OEM", href: "#private-label" },
+  { label: "Import Facilitation", href: "#import-facilitation" },
   { label: "Applications", href: "#applications" },
   { label: "Contact Us", href: "#contact" },
 ];
@@ -135,17 +137,26 @@ export function Footer() {
           <p className="font-body text-white/30 text-xs text-center sm:text-left">
             &copy; {year} SBZ Enterprises. All Rights Reserved. | Sunvia.Oil
           </p>
-          <p className="font-body text-white/20 text-xs">
-            Built with love using{" "}
+          <div className="flex items-center gap-4">
+            <p className="font-body text-white/20 text-xs">
+              Built with love using{" "}
+              <a
+                href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white/40 transition-colors"
+              >
+                caffeine.ai
+              </a>
+            </p>
             <a
-              href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(hostname)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white/40 transition-colors"
+              href="/admin"
+              className="font-body text-white/15 text-xs hover:text-white/35 transition-colors"
+              title="Admin"
             >
-              caffeine.ai
+              Admin
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>

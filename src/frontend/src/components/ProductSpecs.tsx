@@ -7,7 +7,10 @@ const SPECS = [
   { label: "Appearance", value: "Clear, light golden liquid" },
   { label: "Odor", value: "Neutral" },
   { label: "Shelf Life", value: "Long shelf stability under proper storage" },
-  { label: "Compliance", value: "Meets international food safety standards" },
+  {
+    label: "Compliance",
+    value: "Produced to international food-grade standards",
+  },
 ];
 
 const QUALITY_PARAMS = [
@@ -110,8 +113,8 @@ export function ProductSpecs() {
                 Need Full Technical Data Sheet?
               </h3>
               <p className="font-body text-charcoal/75 text-sm mb-5 leading-relaxed">
-                Contact us to receive complete laboratory analysis reports and
-                export documentation for your compliance requirements.
+                Contact us to receive available product documentation and export
+                paperwork for your requirements.
               </p>
               <button
                 type="button"

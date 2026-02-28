@@ -5,7 +5,7 @@ const QA_POINTS = [
   {
     icon: FlaskConical,
     title: "Tested for Food-Grade Compliance",
-    desc: "Every batch undergoes laboratory testing to verify it meets international food safety and quality standards before dispatch.",
+    desc: "Each production run undergoes quality checks to verify compliance with food safety and quality parameters before dispatch.",
   },
   {
     icon: Settings,
@@ -15,12 +15,12 @@ const QA_POINTS = [
   {
     icon: PackageCheck,
     title: "Hygienic Handling & Packaging",
-    desc: "GMP-compliant production environment with strict hygiene protocols at every stage of handling and packaging.",
+    desc: "Production handled with strict hygiene protocols at every stage of handling and packaging.",
   },
   {
     icon: Globe,
     title: "Export-Quality Standards Maintained",
-    desc: "Packaged and documented to comply with international export regulations and destination country requirements.",
+    desc: "Packaged and documented in line with standard export requirements.",
   },
 ];
 

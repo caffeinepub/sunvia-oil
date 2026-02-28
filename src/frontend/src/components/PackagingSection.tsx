@@ -1,12 +1,14 @@
 import { Factory, ShoppingBag } from "lucide-react";
 import { motion } from "motion/react";
+import bulkImg from "/assets/generated/packaging-bulk-sunflower-oil.dim_600x400.jpg";
+import retailImg from "/assets/generated/packaging-retail-sunflower-oil.dim_600x400.jpg";
 
 const PACKAGING_TIERS = [
   {
     icon: ShoppingBag,
     title: "Retail Packaging",
     desc: "Standard consumer-ready formats for supermarkets, grocers, and retail chains",
-    image: "/assets/generated/packaging-retail-sunflower-oil.dim_600x400.jpg",
+    image: retailImg,
     imageAlt: "Retail sunflower oil packaging — PET bottle and tin can",
     items: [
       "500ml & 1L PET bottles",
@@ -21,7 +23,7 @@ const PACKAGING_TIERS = [
     icon: Factory,
     title: "Bulk & Industrial Packaging",
     desc: "Large-volume export formats for manufacturers, importers, and distributors",
-    image: "/assets/generated/packaging-bulk-sunflower-oil.dim_600x400.jpg",
+    image: bulkImg,
     imageAlt: "Bulk sunflower oil packaging — drums and barrels",
     items: [
       "25L & 50L HDPE jerry cans",

@@ -11,8 +11,10 @@ import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
 export interface Inquiry {
+  'id' : bigint,
   'country' : string,
   'name' : string,
+  'isRead' : boolean,
   'email' : string,
   'company' : string,
   'message' : string,
@@ -21,9 +23,22 @@ export interface Inquiry {
   'packagingInterest' : string,
 }
 export type Time = bigint;
+export interface UserProfile { 'name' : string }
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
 export interface _SERVICE {
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'deleteInquiry' : ActorMethod<[bigint], undefined>,
   'getAllInquiries' : ActorMethod<[], Array<Inquiry>>,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getInquiryCount' : ActorMethod<[], bigint>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'markInquiryRead' : ActorMethod<[bigint], undefined>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'submitInquiry' : ActorMethod<
     [string, string, string, string, string, string, string],
     undefined

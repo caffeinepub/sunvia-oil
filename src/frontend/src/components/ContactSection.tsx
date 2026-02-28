@@ -20,10 +20,12 @@ import {
 import { motion } from "motion/react";
 import { useState } from "react";
 
-const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
-const MASCOT_SRC =
-  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 import { useSubmitInquiry } from "@/hooks/useQueries";
+import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+
+const SBZ_LOGO_SRC = sbzLogo;
+const MASCOT_SRC = mascotImg;
 
 type FormData = {
   name: string;
@@ -282,7 +284,7 @@ export function ContactSection() {
                   </h3>
                   <p className="font-body text-charcoal-mid text-base leading-relaxed mb-6">
                     Thank you for contacting SBZ Enterprises. We'll review your
-                    inquiry and respond within 1-2 business days.
+                    inquiry and respond as soon as possible.
                   </p>
                   <Button
                     type="button"

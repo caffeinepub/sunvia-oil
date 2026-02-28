@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 const SERVICES = [
   "Custom brand packaging",
   "Label design assistance",
-  "Regulatory-compliant labeling",
+  "Labeling per destination requirements",
   "Flexible pack sizes",
   "Export documentation support",
   "Bulk supply under buyer's brand",

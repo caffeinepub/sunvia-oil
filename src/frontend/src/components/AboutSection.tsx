@@ -1,10 +1,13 @@
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
+import sunflowerProductImg from "/assets/generated/sunflower-oil-product.dim_600x600.png";
+import mascotUpload from "/assets/uploads/IMG-20260224-WA0011-1.jpg";
 
-const MASCOT_SRC = "/assets/uploads/IMG-20260224-WA0011-1.jpg";
+const MASCOT_SRC = mascotUpload;
+const PRODUCT_IMG = sunflowerProductImg;
 
 const BENEFITS = [
-  "Low cholesterol content",
+  "Low in saturated fats",
   "High levels of polyunsaturated and monounsaturated fatty acids",
   "Light taste and neutral odor",
   "Excellent frying performance",
@@ -39,9 +42,9 @@ export function AboutSection() {
               to ensure purity, clarity, and stability.
             </p>
             <p className="font-body text-charcoal-mid text-base sm:text-lg leading-relaxed mb-9">
-              The oil meets international food-grade standards and is suitable
-              for human consumption as well as large-scale industrial food
-              applications.
+              The oil is produced to international food-grade standards and is
+              intended for human consumption as well as large-scale industrial
+              food applications.
             </p>
 
             <h3 className="font-display font-semibold text-charcoal text-xl mb-5">
@@ -76,7 +79,7 @@ export function AboutSection() {
 
             <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(60,40,10,0.15)]">
               <img
-                src="/assets/generated/sunflower-oil-product.dim_600x600.png"
+                src={PRODUCT_IMG}
                 alt="Sunvia.Oil Premium Refined Sunflower Oil"
                 className="w-full h-auto object-cover"
                 loading="lazy"

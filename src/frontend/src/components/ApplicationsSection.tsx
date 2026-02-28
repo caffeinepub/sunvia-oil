@@ -39,7 +39,7 @@ const APPLICATIONS = [
   {
     icon: UtensilsCrossed,
     title: "Ready-to-Eat Food Production",
-    desc: "Meets strict RTE food safety standards",
+    desc: "Suitable for ready-to-eat food applications",
   },
   {
     icon: Sandwich,

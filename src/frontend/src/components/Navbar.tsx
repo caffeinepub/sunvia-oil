@@ -1,30 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
 
-const SBZ_LOGO_SRC = "/assets/uploads/IMG-20260226-WA0022-2.jpg";
-const MASCOT_SRC =
-  "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+const SBZ_LOGO_SRC = sbzLogo;
+const MASCOT_SRC = mascotImg;
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Products", href: "#products" },
   { label: "Packaging", href: "#packaging" },
   { label: "Private Label", href: "#private-label" },
+  { label: "Import", href: "#import-facilitation" },
   { label: "Applications", href: "#applications" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
@@ -36,13 +31,7 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(60,40,10,0.1)]"
-            : "bg-transparent"
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-[0_2px_20px_rgba(60,40,10,0.1)]">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo / Wordmark */}
