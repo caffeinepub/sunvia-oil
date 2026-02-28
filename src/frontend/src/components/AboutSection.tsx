@@ -1,7 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
-import sunflowerProductImg from "/assets/generated/sunflower-oil-product.dim_600x600.png";
-import mascotUpload from "/assets/uploads/IMG-20260224-WA0011-1.jpg";
+import sunflowerProductImg from "../../public/assets/generated/sunflower-oil-product.dim_600x600.png";
+import mascotUpload from "../../public/assets/uploads/IMG-20260224-WA0011-1.jpg";
 
 const MASCOT_SRC = mascotUpload;
 const PRODUCT_IMG = sunflowerProductImg;

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Award, Globe, Package, Tag } from "lucide-react";
 import { motion } from "motion/react";
-import heroBg from "/assets/generated/hero-sunflower-field.dim_1600x700.jpg";
-import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import heroBg from "../../public/assets/generated/hero-sunflower-field.dim_1600x700.jpg";
+import mascotImg from "../../public/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 
 const MASCOT_SRC = mascotImg;
 const HERO_BG = heroBg;

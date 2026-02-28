@@ -1,7 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import type React from "react";
-import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
-import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+import mascotImg from "../../public/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "../../public/assets/uploads/IMG-20260226-WA0022-2.jpg";
 
 const SBZ_LOGO_SRC = sbzLogo;
 const MASCOT_SRC = mascotImg;

@@ -1,7 +1,7 @@
 import { Factory, ShoppingBag } from "lucide-react";
 import { motion } from "motion/react";
-import bulkImg from "/assets/generated/packaging-bulk-sunflower-oil.dim_600x400.jpg";
-import retailImg from "/assets/generated/packaging-retail-sunflower-oil.dim_600x400.jpg";
+import bulkImg from "../../public/assets/generated/packaging-bulk-sunflower-oil.dim_600x400.jpg";
+import retailImg from "../../public/assets/generated/packaging-retail-sunflower-oil.dim_600x400.jpg";
 
 const PACKAGING_TIERS = [
   {

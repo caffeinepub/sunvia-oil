@@ -28,8 +28,8 @@ import {
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
-import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
-import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+import mascotImg from "../../public/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "../../public/assets/uploads/IMG-20260226-WA0022-2.jpg";
 import { useInternetIdentity } from "../hooks/useInternetIdentity";
 import {
   type Inquiry,

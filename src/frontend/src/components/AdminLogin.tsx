@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Loader2, LogIn, Shield } from "lucide-react";
 import { motion } from "motion/react";
-import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
-import sbzLogo from "/assets/uploads/IMG-20260226-WA0022-2.jpg";
+import mascotImg from "../../public/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import sbzLogo from "../../public/assets/uploads/IMG-20260226-WA0022-2.jpg";
 import { useInternetIdentity } from "../hooks/useInternetIdentity";
 
 const MASCOT_SRC = mascotImg;

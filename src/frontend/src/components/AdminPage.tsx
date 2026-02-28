@@ -3,7 +3,7 @@ import { KeyRound, Loader2, LogOut, ShieldCheck, ShieldX } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
-import mascotImg from "/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
+import mascotImg from "../../public/assets/generated/sunvia-mascot-nobg-transparent.dim_600x600.png";
 import { useActor } from "../hooks/useActor";
 import { useInternetIdentity } from "../hooks/useInternetIdentity";
 import { useIsCallerAdmin } from "../hooks/useQueries";
