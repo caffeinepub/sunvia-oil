@@ -13,13 +13,25 @@ import { AdminLogin } from "./AdminLogin";
 const MASCOT_SRC = mascotImg;
 
 export function AdminPage() {
-  const { identity, isInitializing, isLoginSuccess } = useInternetIdentity();
-  const isAuthenticated = !!identity && isLoginSuccess;
+  const { identity, isInitializing } = useInternetIdentity();
+  // isLoginSuccess is only true after a fresh login in this session.
+  // On page reload the stored identity is restored with status "idle",
+  // so we treat any non-anonymous identity as authenticated.
+  const isAuthenticated = !!identity && !isInitializing;
 
-  const { data: isAdmin, isLoading: isCheckingAdmin } = useIsCallerAdmin();
+  const {
+    data: isAdmin,
+    isLoading: isCheckingAdmin,
+    refetch,
+  } = useIsCallerAdmin();
+
+  // Still initializing — show loading
+  if (isInitializing) {
+    return <AdminLoadingScreen />;
+  }
 
   // Not authenticated — show login
-  if (!isAuthenticated || isInitializing) {
+  if (!isAuthenticated) {
     return <AdminLogin />;
   }
 
@@ -28,9 +40,9 @@ export function AdminPage() {
     return <AdminLoadingScreen />;
   }
 
-  // Not admin — show access denied
+  // Not admin — show access denied / first-time setup
   if (!isAdmin) {
-    return <AccessDenied />;
+    return <AccessDenied onActivated={() => refetch()} />;
   }
 
   // Admin — show dashboard
@@ -66,11 +78,12 @@ function AdminLoadingScreen() {
   );
 }
 
-function AccessDenied() {
+function AccessDenied({ onActivated }: { onActivated: () => void }) {
   const { clear } = useInternetIdentity();
   const { actor } = useActor();
   const [activating, setActivating] = useState(false);
   const [done, setDone] = useState(false);
+  const [alreadySet, setAlreadySet] = useState(false);
 
   const handleActivateAdmin = async () => {
     if (!actor) return;
@@ -78,13 +91,17 @@ function AccessDenied() {
     try {
       await (actor as any)._initializeAccessControlWithSecret("sunvia2024");
       setDone(true);
-      toast.success("Admin access granted! Refreshing...");
-      setTimeout(() => window.location.reload(), 1200);
+      toast.success("Admin access granted! Loading dashboard...");
+      setTimeout(() => onActivated(), 1200);
     } catch (e: any) {
       const msg = e?.message ?? String(e);
-      if (msg.includes("already initialized")) {
+      if (
+        msg.includes("already initialized") ||
+        msg.includes("already assigned")
+      ) {
+        setAlreadySet(true);
         toast.error(
-          "Admin already set up. This account may not be the registered admin.",
+          "Admin is already set up. Please sign in with the correct Internet Identity account.",
         );
       } else {
         toast.error(`Setup failed: ${msg}`);
@@ -109,55 +126,84 @@ function AccessDenied() {
           className="rounded-2xl border p-8 text-center"
           style={{
             background: "oklch(1 0 0)",
-            borderColor: "oklch(0.88 0.05 30)",
+            borderColor: alreadySet
+              ? "oklch(0.82 0.12 27)"
+              : "oklch(0.88 0.05 30)",
             boxShadow: "0 4px 24px rgba(60,10,10,0.08)",
           }}
         >
           <div
             className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4"
-            style={{ background: "oklch(0.97 0.03 27)" }}
+            style={{
+              background: alreadySet
+                ? "oklch(0.97 0.03 27)"
+                : "oklch(0.97 0.04 75)",
+            }}
           >
             <ShieldX
               className="w-6 h-6"
-              style={{ color: "oklch(0.577 0.245 27.325)" }}
+              style={{
+                color: alreadySet
+                  ? "oklch(0.577 0.245 27.325)"
+                  : "oklch(0.65 0.16 72)",
+              }}
             />
           </div>
-          <h1 className="font-display font-bold text-xl text-charcoal mb-2">
-            Not Yet Activated
-          </h1>
-          <p
-            className="font-body text-sm leading-relaxed mb-6"
-            style={{ color: "oklch(0.52 0.025 70)" }}
-          >
-            Your account is not yet set as admin. If this is your first time,
-            tap the button below to activate admin access for this account.
-          </p>
 
-          {/* First-time admin setup button */}
-          <Button
-            onClick={handleActivateAdmin}
-            disabled={activating || done}
-            className="w-full font-body font-semibold gap-2 mb-3"
-            style={{
-              background: done ? "oklch(0.6 0.15 145)" : "oklch(0.78 0.175 75)",
-              color: "oklch(0.15 0.02 50)",
-              border: "none",
-            }}
-          >
-            {activating ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" /> Activating...
-              </>
-            ) : done ? (
-              <>
-                <ShieldCheck className="w-4 h-4" /> Activated! Reloading...
-              </>
-            ) : (
-              <>
-                <KeyRound className="w-4 h-4" /> Activate Admin Access
-              </>
-            )}
-          </Button>
+          {alreadySet ? (
+            <>
+              <h1 className="font-display font-bold text-xl text-charcoal mb-2">
+                Wrong Account
+              </h1>
+              <p
+                className="font-body text-sm leading-relaxed mb-6"
+                style={{ color: "oklch(0.52 0.025 70)" }}
+              >
+                Admin access has already been set up for a different Internet
+                Identity account. Please sign out and sign in with the correct
+                admin account.
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className="font-display font-bold text-xl text-charcoal mb-2">
+                First-Time Setup
+              </h1>
+              <p
+                className="font-body text-sm leading-relaxed mb-6"
+                style={{ color: "oklch(0.52 0.025 70)" }}
+              >
+                Tap below to activate admin access for this Internet Identity
+                account.
+              </p>
+              <Button
+                onClick={handleActivateAdmin}
+                disabled={activating || done}
+                className="w-full font-body font-semibold gap-2 mb-3"
+                style={{
+                  background: done
+                    ? "oklch(0.6 0.15 145)"
+                    : "oklch(0.78 0.175 75)",
+                  color: "oklch(0.15 0.02 50)",
+                  border: "none",
+                }}
+              >
+                {activating ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" /> Activating...
+                  </>
+                ) : done ? (
+                  <>
+                    <ShieldCheck className="w-4 h-4" /> Activated! Loading...
+                  </>
+                ) : (
+                  <>
+                    <KeyRound className="w-4 h-4" /> Activate Admin Access
+                  </>
+                )}
+              </Button>
+            </>
+          )}
 
           <div className="flex flex-col gap-2">
             <Button
@@ -166,7 +212,7 @@ function AccessDenied() {
               className="w-full font-body font-medium gap-2"
             >
               <LogOut className="w-4 h-4" />
-              Sign out
+              Sign out &amp; switch account
             </Button>
             <a
               href="/"

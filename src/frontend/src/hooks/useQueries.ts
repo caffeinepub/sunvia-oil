@@ -45,7 +45,12 @@ export function useIsCallerAdmin() {
     queryKey: ["isCallerAdmin"],
     queryFn: async () => {
       if (!actor) return false;
-      return actor.isCallerAdmin();
+      try {
+        return await actor.isCallerAdmin();
+      } catch {
+        // Not registered or not admin — treat as false
+        return false;
+      }
     },
     enabled: !!actor && !isFetching,
   });
